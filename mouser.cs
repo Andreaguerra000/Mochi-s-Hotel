@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+
 public class mouser : MonoBehaviour
 {
     public GameObject m;
@@ -9,7 +9,9 @@ public class mouser : MonoBehaviour
     private Vector3 startPos;
     private float distanceTraveled;
     private bool right;
-
+        [Header("Audio")]
+    public AudioSource audiosource;
+    public AudioClip mousie;
     void Start()
     {
         startPos = transform.position; 
@@ -35,7 +37,9 @@ public class mouser : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("FirstFloor");
+            audiosource.clip = mousie;
+            audiosource.Play();
+         
         }
     }
 }
